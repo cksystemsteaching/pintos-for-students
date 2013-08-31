@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                      "http://www.w3.org/TR/html40/loose.dtd">
+<HTML>
+<!-- Created on August, 14 2013 by texi2html 1.66 -->
+<!--
+Written by: Lionel Cons <Lionel.Cons@cern.ch> (original author)
+            Karl Berry  <karl@freefriends.org>
+            Olaf Bachmann <obachman@mathematik.uni-kl.de>
+            and many others.
+Maintained by: Many creative people <dev@texi2html.cvshome.org>
+Send bugs and suggestions to <users@texi2html.cvshome.org>
+
+-->
+<HEAD>
+<TITLE>Pintos Projects: Development Tools</TITLE>
+
+<META NAME="description" CONTENT="Pintos Projects: Development Tools">
+<META NAME="keywords" CONTENT="Pintos Projects: Development Tools">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META NAME="Generator" CONTENT="texi2html 1.66">
+<LINK REL="stylesheet" HREF="pintos.css">
+</HEAD>
+
+<BODY >
+
+<A NAME="SEC158"></A>
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos_10.html#SEC145"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos_12.html#SEC166"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+
+<HR SIZE=2>
+<H1> F. Development Tools </H1>
+<!--docid::SEC158::-->
+<P>
+
+Here are some tools that you might find useful while developing code.
+</P>
+<P>
+
+<A NAME="Tags"></A>
+<HR SIZE="6">
+<A NAME="SEC159"></A>
+<H2> F.1 Tags </H2>
+<!--docid::SEC159::-->
+<P>
+
+Tags are an index to the functions and global variables declared in a
+program.  Many editors, including Emacs and <CODE>vi</CODE>, can use
+them.  The <Q><TT>Makefile</TT></Q> in <Q><TT>pintos/src</TT></Q> produces Emacs-style
+tags with the command <CODE>make TAGS</CODE> or <CODE>vi</CODE>-style tags with
+<CODE>make tags</CODE>.
+</P>
+<P>
+
+In Emacs, use <KBD>M-.</KBD> to follow a tag in the current window,
+<KBD>C-x 4 .</KBD> in a new window, or <KBD>C-x 5 .</KBD> in a new frame.  If
+your cursor is on a symbol name for any of those commands, it becomes
+the default target.  If a tag name has multiple definitions, <KBD>M-0
+M-.</KBD> jumps to the next one.  To jump back to where you were before
+you followed the last tag, use <KBD>M-*</KBD>.
+</P>
+<P>
+
+<A NAME="cscope"></A>
+<HR SIZE="6">
+<A NAME="SEC160"></A>
+<H2> F.2 cscope </H2>
+<!--docid::SEC160::-->
+<P>
+
+The <CODE>cscope</CODE> program also provides an index to functions and
+variables declared in a program.  It has some features that tag
+facilities lack.  Most notably, it can find all the points in a
+program at which a given function is called.
+</P>
+<P>
+
+The <Q><TT>Makefile</TT></Q> in <Q><TT>pintos/src</TT></Q> produces <CODE>cscope</CODE>
+indexes when it is invoked as <CODE>make cscope</CODE>.  Once the index has
+been generated, run <CODE>cscope</CODE> from a shell command line; no
+command-line arguments are normally necessary.  Then use the arrow
+keys to choose one of the search criteria listed near the bottom of
+the terminal, type in an identifier, and hit <KBD>Enter</KBD>.
+<CODE>cscope</CODE> will then display the matches in the upper part of
+the terminal.  You may use the arrow keys to choose a particular
+match; if you then hit <KBD>Enter</KBD>, <CODE>cscope</CODE> will invoke the
+default system editor<A NAME="DOCF10" HREF="pintos_fot.html#FOOT10">(10)</A> and position the
+cursor on that match.  To start a new search, type <KBD>Tab</KBD>.  To exit
+<CODE>cscope</CODE>, type <KBD>Ctrl-d</KBD>.
+</P>
+<P>
+
+Emacs and some versions of <CODE>vi</CODE> have their own interfaces to
+<CODE>cscope</CODE>.  For information on how to use these interface,
+visit <A HREF="http://cscope.sourceforge.net, the &lt;CODE&gt;cscope&lt;/CODE&gt; home
+page">http://cscope.sourceforge.net, the <CODE>cscope</CODE> home
+page</A>.
+</P>
+<P>
+
+<A NAME="CVS"></A>
+<HR SIZE="6">
+<A NAME="SEC161"></A>
+<H2> F.3 CVS </H2>
+<!--docid::SEC161::-->
+<P>
+
+CVS is a version-control system.  That is, you can use it to keep
+track of multiple versions of files.  The idea is that you do some
+work on your code and test it, then check it into the version-control
+system.  If you decide that the work you've done since your last
+check-in is no good, you can easily revert to the last checked-in
+version.  Furthermore, you can retrieve any old version of your code
+as of some given day and time.  The version control logs tell you who
+made changes and when.
+</P>
+<P>
+
+CVS is not the best version control system out there, but it's
+free, it's fairly easy to use, and it's already installed in most
+Unix-like environments.
+</P>
+<P>
+
+For more information, visit the <A HREF="https://www.cvshome.org/">CVS
+home page</A>.
+</P>
+<P>
+
+<A NAME="Setting Up CVS"></A>
+<HR SIZE="6">
+<A NAME="SEC162"></A>
+<H3> F.3.1 Setting Up CVS </H3>
+<!--docid::SEC162::-->
+<P>
+
+To set up CVS for use with Pintos on the Leland machines, start by
+choosing one group member as the keeper of the CVS repository.
+Everyone in the group will be able to use the CVS repository, but the
+keeper will actually create the repository, keep its files in his or
+her home directory, and maintain permissions for its contents.
+</P>
+<P>
+
+The keeper has to perform several steps to set up the repository.
+First, create a new AFS group for the repository by executing
+<Q><SAMP>pts creategroup <VAR>keeper</VAR>:pintos-cvs</SAMP></Q>, where <VAR>keeper</VAR> is
+the keeper's Leland username.  Then, add each group member to the new
+group by repeatedly using the command <Q><SAMP>pts adduser -user
+<VAR>username</VAR> -group <VAR>keeper</VAR>:pintos-cvs</SAMP></Q>, where <VAR>username</VAR>
+is the name of a group member.  After the group is created and its
+members added, <Q><SAMP>pts membership <VAR>keeper</VAR>:pintos-cvs</SAMP></Q> should
+report that each group member is a member of the
+<Q><SAMP><VAR>keeper</VAR>:pintos-cvs</SAMP></Q> group.
+</P>
+<P>
+
+The keeper now creates the repository directory and gives the group
+members access to it.  We will assume that the repository will be in a
+directory called <Q><TT>cvs</TT></Q> in the keeper's home directory.  First
+create this directory with <Q><SAMP>mkdir $HOME/cvs</SAMP></Q>, then give group
+members access to it with <Q><SAMP>fs setacl -dir $HOME/cvs -acl
+<VAR>keeper</VAR>:pintos-cvs write</SAMP></Q>.  Group members also need to be able to
+look up the <Q><TT>cvs</TT></Q> directory in the keeper's home directory, which
+can be enabled via <Q><SAMP>fs setacl -dir $HOME -acl
+<VAR>keeper</VAR>:pintos-cvs l</SAMP></Q> (that's letter &quot;ell,&quot; not digit
+&quot;one.&quot;).<A NAME="DOCF11" HREF="pintos_fot.html#FOOT11">(11)</A>
+</P>
+<P>
+
+Now initialize the repository.
+To initialize the repository, execute <Q><SAMP>cvs -d $HOME/cvs init</SAMP></Q>.
+</P>
+<P>
+
+Finally, import the Pintos sources into the newly initialized
+repository.  If you have an existing set of Pintos sources you want to
+add to the repository, <Q><SAMP>cd</SAMP></Q> to its <Q><SAMP>pintos</SAMP></Q> directory now.
+Otherwise, to import the base Pintos source tree, <Q><SAMP>cd</SAMP></Q> to
+<Q><TT>/usr/class/cs140/pintos/pintos</TT></Q> (note the doubled
+<Q><SAMP>pintos</SAMP></Q>).  After changing the current directory, execute this
+command:
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>cvs -d $HOME/cvs import -m &quot;Imported sources&quot; pintos foobar start
+</pre></td></tr></table><P>
+
+Here is a summary of the commands you have now executed:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>pts creategroup <VAR>keeper</VAR>:pintos-cvs
+pts adduser -user <VAR>username</VAR> -group <VAR>keeper</VAR>:pintos-cvs
+mkdir $HOME/cvs
+fs setacl -dir $HOME/cvs -acl <VAR>keeper</VAR>:pintos-cvs write
+fs setacl -dir $HOME -acl <VAR>keeper</VAR>:pintos-cvs l
+cvs -d $HOME/cvs init
+cd /usr/class/cs140/pintos/pintos
+cvs -d $HOME/cvs import -m &quot;Imported sources&quot; pintos foobar start
+</pre></td></tr></table><P>
+
+The repository is now ready for use by any group member, as described
+below.  Keep in mind that the repository should only be accessed
+using CVS commands--it is not generally useful to examine them by
+hand, and you should definitely not modify them yourself.
+</P>
+<P>
+
+<A NAME="Using CVS"></A>
+<HR SIZE="6">
+<A NAME="SEC163"></A>
+<H3> F.3.2 Using CVS </H3>
+<!--docid::SEC163::-->
+<P>
+
+To use CVS, start by check out a working copy of the contents of the
+CVS repository into a directory named <Q><TT><VAR>dir</VAR></TT></Q>.  To do so, execute
+<Q><SAMP>cvs -d ~<VAR>keeper</VAR>/cvs checkout -d <VAR>dir</VAR> pintos</SAMP></Q>, where
+<VAR>keeper</VAR> is the CVS keeper's Leland username.
+</P>
+<P>
+
+(If this fails due to some kind of permission problem, then run
+<CODE>aklog</CODE> and try again.  If it still doesn't work, log out and
+back in.  If that still doesn't fix the problem, the CVS repository may
+not be initialized properly.)
+</P>
+<P>
+
+At this point, you can modify any of the files in the working copy.
+You can see the changes you've made with <Q><SAMP>cvs diff -u</SAMP></Q>.  If you
+want to commit these changes back to the repository, making them
+visible to the other group members, you can use the CVS commit
+command.  Within the <Q><TT>pintos</TT></Q> directory, execute <Q><SAMP>cvs
+commit</SAMP></Q>.  This will figure out the files that have been changed and
+fire up a text editor for you to describe the changes.  By default,
+this editor is <Q><TT>vi</TT></Q>, but you can select a different editor by
+setting the <CODE>CVSEDITOR</CODE> environment variable, e.g. with
+<Q><SAMP>setenv CVSEDITOR emacs</SAMP></Q> (add this line to your <Q><TT>.cvsrc</TT></Q> to
+make it permanent).
+</P>
+<P>
+
+Suppose another group member has committed changes.  You can see the
+changes committed to the repository since the time you checked it out
+(or updated from it) with <Q><SAMP>cvs diff -u -r BASE -r HEAD</SAMP></Q>.  You can
+merge those change into your working copy using <Q><SAMP>cvs update</SAMP></Q>.  If
+any of your local changes conflict with the committed changes, the CVS
+command output should tell you.  In that case, edit the files that
+contain conflicts, looking for <Q><SAMP>&lt;&lt;&lt;</SAMP></Q> and <Q><SAMP>&gt;&gt;&gt;</SAMP></Q> that denote
+the conflicts, and fix the problem.
+</P>
+<P>
+
+You can view the history of <VAR>file</VAR> in your working directory,
+including the log messages, with <Q><SAMP>cvs log <VAR>file</VAR></SAMP></Q>.
+</P>
+<P>
+
+You can give a particular set of file versions a name called a
+<EM>tag</EM>.  First <Q><SAMP>cd</SAMP></Q> to the root of the working copy, then
+execute <Q><SAMP>cvs tag <VAR>name</VAR></SAMP></Q>.  It's best to have no local changes
+in the working copy when you do this, because the tag will not include
+uncommitted changes.  To recover the tagged repository later, use the
+<Q><SAMP>checkout</SAMP></Q> command in the form <Q><SAMP>cvs -d ~<VAR>keeper</VAR>/cvs
+checkout -r <VAR>tag</VAR> -d <VAR>dir</VAR> pintos</SAMP></Q>, where <VAR>keeper</VAR> is the
+username of the CVS keeper and <VAR>dir</VAR> is the directory to put the
+tagged repository into.
+</P>
+<P>
+
+If you add a new file to the source tree, you'll need to add it to the
+repository with <Q><SAMP>cvs add <VAR>file</VAR></SAMP></Q>.  This command does not have
+lasting effect until the file is committed later with <Q><SAMP>cvs
+commit</SAMP></Q>.
+</P>
+<P>
+
+To remove a file from the source tree, first remove it from the file
+system with <CODE>rm</CODE>, then tell CVS with <Q><SAMP>cvs remove
+<VAR>file</VAR></SAMP></Q>.  Again, only <Q><SAMP>cvs commit</SAMP></Q> will make the change
+permanent.
+</P>
+<P>
+
+To discard your local changes for a given file, without committing
+them, use <Q><SAMP>cvs update -C <VAR>file</VAR></SAMP></Q>.
+</P>
+<P>
+
+To check out a version of your repository as of a particular date, use
+the command <Q><SAMP>cvs -d ~<VAR>keeper</VAR>/cvs checkout -D '<VAR>date</VAR>' -d
+<VAR>dir</VAR> pintos</SAMP></Q>, where <VAR>keeper</VAR> is the username of the CVS
+keeper and <VAR>dir</VAR> is the directory to put the tagged repository
+into..  A typical format for <VAR>date</VAR> is <Q><SAMP>YYYY-MM-DD HH:MM</SAMP></Q>,
+but CVS accepts several formats, even something like <Q><SAMP>1 hour
+ago</SAMP></Q>.
+</P>
+<P>
+
+For more information, visit the <A HREF="https://www.cvshome.org/">CVS
+home page</A>.
+</P>
+<P>
+
+<A NAME="CVS Locking"></A>
+<HR SIZE="6">
+<A NAME="SEC164"></A>
+<H3> F.3.3 CVS Locking </H3>
+<!--docid::SEC164::-->
+<P>
+
+You might occasionally see a message like this while using CVS:
+</P>
+<P>
+
+<TABLE><tr><td>&nbsp;</td><td class=example><pre>waiting for blp's lock in /afs/ir/users/b/l/blp/cvs
+</pre></td></tr></table><P>
+
+This normally means that more than one user is accessing the repository
+at the same time.  CVS should automatically retry after 30 seconds, at
+which time the operation should normally be able to continue.
+</P>
+<P>
+
+If you encounter a long wait for a lock, of more than a minute or so, it
+may indicate that a CVS command did not complete properly and failed to
+remove its locks.  If you think that this is the case, ask the user in
+question about it.  If it appears that an operation did go awry, then
+you (or the named user) can delete files whose names start with
+<Q><TT>#cvs.rfl</TT></Q>, <Q><TT>#cvs.wfl</TT></Q>, or <Q><TT>#cvs.lock</TT></Q> in the directory
+mentioned in the message.  Doing so should allow your operation to
+proceed.  Do not delete or modify other files.
+</P>
+<P>
+
+<A NAME="VNC"></A>
+<HR SIZE="6">
+<A NAME="SEC165"></A>
+<H2> F.4 VNC </H2>
+<!--docid::SEC165::-->
+<P>
+
+VNC stands for Virtual Network Computing.  It is, in essence, a remote
+display system which allows you to view a computing &quot;desktop&quot;
+environment not only on the machine where it is running, but from
+anywhere on the Internet and from a wide variety of machine
+architectures.  It is already installed on the lab machines.  
+For more information, look at the <A HREF="http://www.realvnc.com/">VNC
+Home Page</A>.
+</P>
+<P>
+
+<A NAME="Installing Pintos"></A>
+<HR SIZE="6">
+<TABLE CELLPADDING=1 CELLSPACING=1 BORDER=0>
+<TR><TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos_11.html#SEC158"> &lt;&lt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos_12.html#SEC166"> &gt;&gt; </A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT"> &nbsp; <TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos.html#SEC_Top">Top</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos.html#SEC_Contents">Contents</A>]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[Index]</TD>
+<TD VALIGN="MIDDLE" ALIGN="LEFT">[<A HREF="pintos_abt.html#SEC_About"> ? </A>]</TD>
+</TR></TABLE>
+<BR>
+<FONT SIZE="-1">
+This document was generated
+by <I>Christoph Kirsch</I> on <I>August, 14 2013</I>
+using <A HREF="http://texi2html.cvshome.org"><I>texi2html</I></A>
+</FONT>
+
+</BODY>
+</HTML>
