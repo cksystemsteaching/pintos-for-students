@@ -3,14 +3,65 @@ sub T2H_InitGlobals
     # Set the default body text, inserted between <BODY ... >
     $T2H_BODYTEXT = '';
     # text inserted after <BODY ...>
-    $T2H_AFTER_BODY_OPEN = '';
+    $T2H_AFTER_BODY_OPEN = '<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href=".">Pintos</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="https://github.com/cksystemsteaching/pintos-for-students">Repository</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://www.cs.uni-salzburg.at/~ck/">Christoph Kirsch</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+    <div class="container">
+    <br>';
     #text inserted before </BODY>
-    $T2H_PRE_BODY_CLOSE = '';
+    $T2H_PRE_BODY_CLOSE = '</div><!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push([\'_setAccount\', \'UA-3827654-1\']);
+    _gaq.push([\'_trackPageview\']);
+
+    (function() {
+      var ga = document.createElement(\'script\'); ga.type = \'text/javascript\'; ga.async = true;
+      ga.src = (\'https:\' == document.location.protocol ? \'https://ssl\' : \'http://www\') + \'.google-analytics.com/ga.js\';
+      var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    </script>';
     # this is used in footer
     $T2H_ADDRESS = "<I>$T2H_USER</I> " if $T2H_USER;
     $T2H_ADDRESS .= "on <I>$T2H_TODAY</I>";
     # this is added inside <HEAD></HEAD> after <TITLE> and some META NAME stuff
     # can be used for <style> <script>, <meta> tags
-    $T2H_EXTRA_HEAD = "<LINK REL=\"stylesheet\" HREF=\"pintos.css\">";
+    $T2H_EXTRA_HEAD = '<!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/html5shiv.js"></script>
+      <script src="assets/js/respond.min.js"></script>
+    <![endif]-->';
 }
 1;
